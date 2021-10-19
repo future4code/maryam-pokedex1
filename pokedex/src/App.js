@@ -2,12 +2,14 @@ import React from "react";
 import Home from "./pages/Home/Home";
 import Pokedex from "./pages/Pokedex/Pokedex";
 import PokedexDetails from "./pages/PokedexDetails/PokedexDetails";
-import { Switch, Route, BrowserRouter, useHistory } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
     <div>
   <BrowserRouter>
+    <CssBaseline/>
     <Switch>
 
       <Route exact path={"/"}>
