@@ -10,6 +10,23 @@ export default function Home() {
 
     const [pokeList, setPokeList] = useState([])
     // const [pokeDetails, setPokeDetails] = useState()
+    const [pokedex, setPokedex]= useState([])
+
+    const addToPokedex = (pokemonToAdd) => {
+        const position = pokedex.findIndex((pokemon) => {
+            return pokemon.id === pokemonToAdd.id;
+        });
+
+        const newPokedex = [...pokedex];
+
+        if (position === -1) {
+            newPokedex.push({ ...pokemonToAdd });
+        }
+
+        setPokedex(newPokedex);
+        // console.log("id chegando",pokemonToAdd.id)
+        // console.log("pokedex chegando",pokedex)
+    }
 
     useEffect(() => {
         getPoke()
@@ -27,7 +44,6 @@ export default function Home() {
         axios.get(url)
         .then((res) => {
             setPokeList(res.data.results)
-            console.log(res.data.results)
         })
         .catch((err) => {
             console.log(err.response)
@@ -53,7 +69,7 @@ export default function Home() {
             return (
                 
                 <Cards
-                    
+                    addToPokedex={addToPokedex}
                     title={poke.name} 
                     text={''} 
                     fistButton={'Adicionar'}
