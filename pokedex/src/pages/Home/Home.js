@@ -9,6 +9,7 @@ import axios from "axios";
 export default function Home() {
 
     const [pokeList, setPokeList] = useState([])
+    // const [pokeDetails, setPokeDetails] = useState()
 
     useEffect(() => {
         getPoke()
@@ -33,15 +34,33 @@ export default function Home() {
         })
     }
 
+
+    // const getPokeDetails = (id) =>{
+    //     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    //     axios.get(url)
+    //     .then((res) => {
+    //         setPokeDetails(res.data)
+    //         console.log("resposta", res.data)
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
+
     const pokeCards = pokeList && pokeList.map(
-        poke => {
+        (poke, indice) => {
+            
             return (
+                
                 <Cards
-                    imagem={poke.img}
+                    
                     title={poke.name} 
                     text={''} 
                     fistButton={'Adicionar'}
-                    secondButton={'Detalhes'}/>
+                    secondButton={'Detalhes'}
+                    indice={indice + 1 }
+                    key={indice}
+                />
             )
         }
     )

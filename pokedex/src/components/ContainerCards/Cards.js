@@ -12,21 +12,21 @@ export const Cards = (props) => {
     const [poke, setPoke] = useState()
 
     useEffect(() => {
-        getPokeDetails(props.url)
-    }, [])
+        getPokeDetails(props.indice)
+    }, [props.indice])
 
-    const getPokeDetails = () =>{
-        const url = 'https://pokeapi.co/api/v2/pokemon/1'
+    const getPokeDetails = (id) =>{
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
         axios.get(url)
         .then((res) => {
-            // setPoke(res.data)
+            setPoke(res.data)
             console.log(res.data)
         })
         .catch((err) => {
             console.log(err)
         })
     }
-
+    
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -35,6 +35,7 @@ export const Cards = (props) => {
         image={poke && 
             poke.sprites && 
             poke.sprites.versions['generation-v']['black-white'].animated.front_default}
+        
         alt={props.description}
       />
       <CardContent>
