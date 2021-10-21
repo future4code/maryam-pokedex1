@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route, BrowserRouter, useHistory } from 'react-router-dom';
 import { Cards } from "../../components/ContainerCards/Cards";
 import { CardContainer } from "./Style";
-
+import { CardPokedex } from "./Style";
+import { Container } from "./Style";
 
 export default function Pokedex(props) {
     const history= useHistory()
@@ -19,16 +20,20 @@ export default function Pokedex(props) {
         (poke, indice) => {
 
             return (
-                <div>
+                <Container>
+                <CardPokedex>
                 <img src={poke && 
                 poke.sprites && 
                 poke.sprites.versions['generation-v']['black-white'].animated.front_default}
                 alt={props.description}/>
-                <p>{poke.name}</p>
+                <h4>{poke.name}</h4>
+                <div>
                 <button>Remover</button>
-                <button>Detalhes</button>
+                <button onClick={goToPokedexDetails}>Detalhes</button>
                 </div>
-
+                </CardPokedex>
+                </Container>
+                
                 // <Cards
                 //     addToPokedex={props.addToPokedex}
                 //     title={poke.name} 
