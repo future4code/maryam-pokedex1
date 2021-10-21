@@ -6,26 +6,25 @@ import { CardContainer } from "./Style";
 import axios from "axios";
 
 
-export default function Home() {
-
+export default function Home(props) {
     const [pokeList, setPokeList] = useState([])
-    const [pokedex, setPokedex]= useState([])
+    // const [pokedex, setPokedex]= useState([])
 
-    const addToPokedex = (pokemonToAdd) => {
-        const position = pokedex.findIndex((pokemon) => {
-            return pokemon.id === pokemonToAdd.id;
-        });
+    // const addToPokedex = (pokemonToAdd) => {
+    //     const position = pokedex.findIndex((pokemon) => {
+    //         return pokemon.id === pokemonToAdd.id;
+    //     });
 
-        const newPokedex = [...pokedex];
+    //     const newPokedex = [...pokedex];
 
-        if (position === -1) {
-            newPokedex.push({ ...pokemonToAdd });
-        }
+    //     if (position === -1) {
+    //         newPokedex.push({ ...pokemonToAdd });
+    //     }
 
-        setPokedex(newPokedex);
-        // console.log("id chegando",pokemonToAdd.id)
-        // console.log("pokedex chegando",pokedex)
-    }
+    //     setPokedex(newPokedex);
+    //     // console.log("id chegando",pokemonToAdd.id)
+    //     // console.log("pokedex chegando",pokedex)
+    // }
 
     useEffect(() => {
         getPoke()
@@ -55,7 +54,7 @@ export default function Home() {
             return (
                 
                 <Cards
-                    addToPokedex={addToPokedex}
+                    addToPokedex={props.addToPokedex}
                     title={poke.name} 
                     text={''} 
                     fistButton={'Adicionar'}

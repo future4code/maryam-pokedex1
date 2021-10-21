@@ -7,6 +7,7 @@ import {Button} from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { AlignPhotos } from "./CardStyle";
+import { Switch, Route, BrowserRouter, useHistory } from 'react-router-dom';
 
 export const Cards = (props) => {
 
@@ -28,7 +29,11 @@ export const Cards = (props) => {
         })
     }
     
+    const history= useHistory()
 
+    const goToPokedexDetails=()=>{
+      history.push("/pokedex-detalhes")
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -52,7 +57,7 @@ export const Cards = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={()=>{props.addToPokedex(poke)}}>{props.fistButton}</Button>
-        <Button size="small">{props.secondButton}</Button>
+        <Button size="small" onClick={goToPokedexDetails}>{props.secondButton}</Button>
       </CardActions>
     </Card>
   );
