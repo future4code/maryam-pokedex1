@@ -5,13 +5,13 @@ import PokedexDetails from "./pages/PokedexDetails/PokedexDetails";
 // <<<<<<< HEAD
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Header from "./components/Header/Header";
+import Header from "./components/Header/Header";
 // >>>>>>> master
 
 function App() {
   return (
     <div>
-
+      <Header/>
       <BrowserRouter>
         <CssBaseline />
         <Switch>

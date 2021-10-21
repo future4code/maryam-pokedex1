@@ -36,11 +36,12 @@ export const Cards = (props) => {
         <CardMedia
           component="img"
           height="170"
+          width="150"
           image={poke && 
               poke.sprites && 
               poke.sprites.versions['generation-v']['black-white'].animated.front_default}
           alt={props.description}
-          style={{height: 120, width: 120}}/>
+          style={{height: 120, width: 125}}/>
         </AlignPhotos>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
