@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import {Button} from '@material-ui/core';
 import Typography from '@mui/material/Typography';
 import axios from "axios";
+import { AlignPhotos } from "./CardStyle";
 
 export const Cards = (props) => {
 
@@ -31,15 +32,16 @@ export const Cards = (props) => {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={poke && 
-            poke.sprites && 
-            poke.sprites.versions['generation-v']['black-white'].animated.front_default}
-        
-        alt={props.description}
-      />
+      <AlignPhotos>
+        <CardMedia
+          component="img"
+          height="170"
+          image={poke && 
+              poke.sprites && 
+              poke.sprites.versions['generation-v']['black-white'].animated.front_default}
+          alt={props.description}
+          style={{height: 120, width: 120}}/>
+        </AlignPhotos>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {props.title}
