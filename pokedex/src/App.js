@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Home from "./pages/Home/Home";
 import Pokedex from "./pages/Pokedex/Pokedex";
 import PokedexDetails from "./pages/PokedexDetails/PokedexDetails";
@@ -9,6 +9,24 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 // >>>>>>> master
 
 function App() {
+  const [pokedex, setPokedex]= useState([])
+
+  const addToPokedex = (pokemonToAdd) => {
+    const position = pokedex.findIndex((pokemon) => {
+        return pokemon.id === pokemonToAdd.id;
+    });
+
+    const newPokedex = [...pokedex];
+
+    if (position === -1) {
+        newPokedex.push({ ...pokemonToAdd });
+    }
+
+    setPokedex(newPokedex);
+    console.log("id chegando",pokemonToAdd.id)
+    console.log("pokedex chegando",pokedex)
+}
+
   return (
     <div>
 
@@ -18,11 +36,15 @@ function App() {
 
 
           <Route exact path={"/"}>
-            <Home />
+            <Home 
+            addToPokedex={addToPokedex}
+            />
           </Route>
 
           <Route exact path={"/pokedex"}>
-            <Pokedex />
+            <Pokedex 
+            Pokedex={pokedex}
+            />
           </Route>
 
           <Route exact path={"/pokedex-detalhes"}>
