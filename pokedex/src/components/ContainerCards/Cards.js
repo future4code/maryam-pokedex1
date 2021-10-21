@@ -21,13 +21,15 @@ export const Cards = (props) => {
         axios.get(url)
         .then((res) => {
             setPoke(res.data)
-            console.log(res.data)
+            
         })
         .catch((err) => {
             console.log(err)
         })
     }
     
+
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <AlignPhotos>
@@ -49,7 +51,7 @@ export const Cards = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">{props.fistButton}</Button>
+        <Button size="small" onClick={()=>{props.addToPokedex(poke)}}>{props.fistButton}</Button>
         <Button size="small">{props.secondButton}</Button>
       </CardActions>
     </Card>
