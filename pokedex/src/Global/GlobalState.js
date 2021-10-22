@@ -6,6 +6,7 @@ import axios from 'axios';
 const GlobalState = (props) => {
     const [pokedex, setPokedex]= useState([])
     const [pokeList, setPokeList] = useState([])
+    // const [poke, setPoke] = useState()
 
 
     const getPoke = () => {
@@ -19,6 +20,19 @@ const GlobalState = (props) => {
             console.log(err.response)
         })
     }
+
+
+    // const getPokeDetails = (id) =>{
+    //     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    //     axios.get(url)
+    //     .then((res) => {
+    //         setPoke(res.data)
+            
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
 
 
     const addToPokedex = (pokemonToAdd) => {
