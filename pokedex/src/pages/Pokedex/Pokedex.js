@@ -1,20 +1,20 @@
-import React from "react";
-import { Switch, Route, BrowserRouter, useHistory } from 'react-router-dom';
-import { Cards } from "../../components/ContainerCards/Cards";
-import { CardContainer } from "./Style";
+import {React, useContext} from "react";
+import { useHistory } from 'react-router-dom';
+import GlobalStateContext from "../../Global/GlobalStateContext";
 import { CardPokedex } from "./Style";
 import { Container } from "./Style";
 
 export default function Pokedex(props) {
+    const {states, setters, requests} = useContext(GlobalStateContext)
     const history= useHistory()
-    const voltar=()=>{
+    const goBack=()=>{
         history.goBack()
     }
     const goToPokedexDetails=()=>{
         history.push("/pokedex-detalhes")
     }
 
-    const pokedex= props.Pokedex
+    const pokedex= states.pokedex
 
     const pokeCards = pokedex && pokedex.map(
         (poke, indice) => {
@@ -34,15 +34,7 @@ export default function Pokedex(props) {
                 </CardPokedex>
                 </Container>
                 
-                // <Cards
-                //     addToPokedex={props.addToPokedex}
-                //     title={poke.name} 
-                //     text={''} 
-                //     fistButton={'Remover'}
-                //     secondButton={'Detalhes'}
-                //     indice={indice + 1 }
-                //     key={indice}
-                // /> 
+
             )
         }
     )
@@ -51,7 +43,7 @@ export default function Pokedex(props) {
         <div>
         <h1>Pokedex</h1>
         {pokeCards}
-        <button onClick={voltar}>voltar</button>
+        <button onClick={goBack}>voltar</button>
         <button onClick={goToPokedexDetails}>detalhes</button>
         </div>
     );
