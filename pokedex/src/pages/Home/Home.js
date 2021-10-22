@@ -1,13 +1,16 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory} from 'react-router-dom';
 import { Cards } from "../../components/ContainerCards/Cards";
 import { CardContainer } from "./Style";
 import axios from "axios";
+import GlobalStateContext from "../../Global/GlobalStateContext";
 
 
 export default function Home(props) {
-    const [pokeList, setPokeList] = useState([])
+
+    const {states, setters, requests} = useContext(GlobalStateContext)
+    // const [pokeList, setPokeList] = useState([])
     // const [pokedex, setPokedex]= useState([])
 
     // const addToPokedex = (pokemonToAdd) => {
@@ -27,8 +30,8 @@ export default function Home(props) {
     // }
 
     useEffect(() => {
-        getPoke()
-    }, [])
+        requests.getPoke()
+    }, [requests])
 
     const history= useHistory()
 
@@ -36,25 +39,14 @@ export default function Home(props) {
         history.push("/pokedex")
     }
 
-    const getPoke = () => {
-        const url = 'https://pokeapi.co/api/v2/pokemon/'
-
-        axios.get(url)
-        .then((res) => {
-            setPokeList(res.data.results)
-        })
-        .catch((err) => {
-            console.log(err.response)
-        })
-    }
-
+    const pokeList = states.pokeList
     const pokeCards = pokeList && pokeList.map(
         (poke, indice) => {
             
             return (
                 
                 <Cards
-                    addToPokedex={props.addToPokedex}
+                    addToPokedex={requests.addToPokedex}
                     title={poke.name} 
                     text={''} 
                     fistButton={'Adicionar'}
