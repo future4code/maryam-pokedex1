@@ -10,32 +10,15 @@ import axios from "axios";
 import { AlignPhotos } from "./CardStyle";
 import { useHistory } from 'react-router-dom';
 import { BASE_URL } from "../../constants/url";
+import { goToPokemonDetail } from "../../routes/coordinator";
 
 export const Cards = (props) => {
-  const {states, setters, requests} = useContext(GlobalStateContext)
-  const [poke, setPoke] = useState()
-  // const poke = states.poke;
-  useEffect(() => {
-    getPokeDetails(props.indice)
-  }, [props.indice])
-
-  const getPokeDetails = (id) =>{
-      // const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-      axios.get(`${BASE_URL}/pokemon/${id}`)
-      .then((res) => {
-          setPoke(res.data)
-
-      })
-      .catch((err) => {
-          console.log(err)
-      })
-  }
+ 
 
   const history = useHistory()
 
-  const goToPokedexDetails = () => {
-    history.push("/pokedex-detalhes/:nome")
-  }
+
+  const poke = props.poke
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -61,7 +44,7 @@ export const Cards = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={() => { props.addToPokedex(poke) }}>{props.fistButton}</Button>
-        <Button size="small" onClick={goToPokedexDetails}>{props.secondButton}</Button>
+        <Button size="small" onClick={() => goToPokemonDetail(history, poke.name)}>{props.secondButton}</Button>
       </CardActions>
     </Card>
   );

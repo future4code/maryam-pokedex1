@@ -29,9 +29,9 @@ export default function Home(props) {
     //     // console.log("pokedex chegando",pokedex)
     // }
 
-    useEffect(() => {
-        requests.getPoke()
-    }, [requests])
+    // useEffect(() => {
+    //     requests.getPoke()
+    // }, [requests])
 
     const history= useHistory()
 
@@ -39,14 +39,15 @@ export default function Home(props) {
         history.push("/pokedex")
     }
 
-    const pokeList = states.pokeList
-    const pokeCards = pokeList && pokeList.map(
+    const pokemons = states.pokemons
+    const pokeCards = pokemons && pokemons.map(
         (poke, indice) => {
             
             return (
                 
                 <Cards
                     addToPokedex={requests.addToPokedex}
+                    poke={poke}
                     title={poke.name} 
                     text={''} 
                     fistButton={'Adicionar'}
