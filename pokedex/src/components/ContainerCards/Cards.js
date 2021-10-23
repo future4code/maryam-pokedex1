@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import axios from "axios";
 import { AlignPhotos } from "./CardStyle";
 import { useHistory } from 'react-router-dom';
+import { BASE_URL } from "../../constants/url";
 
 export const Cards = (props) => {
   const {states, setters, requests} = useContext(GlobalStateContext)
@@ -19,8 +20,8 @@ export const Cards = (props) => {
   }, [props.indice])
 
   const getPokeDetails = (id) =>{
-      const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-      axios.get(url)
+      // const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+      axios.get(`${BASE_URL}/pokemon/${id}`)
       .then((res) => {
           setPoke(res.data)
 
@@ -33,7 +34,7 @@ export const Cards = (props) => {
   const history = useHistory()
 
   const goToPokedexDetails = () => {
-    history.push("/pokedex-detalhes")
+    history.push("/pokedex-detalhes/:nome")
   }
 
   return (

@@ -1,6 +1,7 @@
 import {React, useState} from "react";
 import GlobalStateContext from "./GlobalStateContext";
 import axios from 'axios';
+import { BASE_URL } from "../constants/url";
 
 
 const GlobalState = (props) => {
@@ -10,9 +11,9 @@ const GlobalState = (props) => {
 
 
     const getPoke = () => {
-        const url = 'https://pokeapi.co/api/v2/pokemon/'
+        // const url = `${BASE_URL}/pokemon/`
 
-        axios.get(url)
+        axios.get(`${BASE_URL}/pokemon/`)
         .then((res) => {
             setPokeList(res.data.results)
         })

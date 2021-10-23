@@ -11,7 +11,7 @@ export default function Pokedex(props) {
         history.goBack()
     }
     const goToPokedexDetails=()=>{
-        history.push("/pokedex-detalhes")
+        history.push("/pokedex-detalhes/:nome")
     }
 
     const pokedex= states.pokedex
