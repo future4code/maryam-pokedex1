@@ -22,18 +22,20 @@ export const TypePoke = (props) => {
         <ContainerTypes>
             <h3>Type Poke</h3>
             {/* <strong>{props.typeName}</strong> */}
-            <div>
-                <p>tipo 1</p>
-                <p>tipo 2</p>
-            </div>
+            {props.types && props.types.map((type)=>{
+                    return <p>{type.type.name}</p>
+                })}
         </ ContainerTypes>
         <ContainerTypes>
             <h3>Attack Types</h3>
             {/* <strong>{props.attackName}</strong> */}
-            <p>attack1</p>
+            {props.moves && props.moves.map((move, index)=>{
+                    return index < 5 && <p>{move.move.name}</p>
+                })}
+            {/* <p>attack1</p>
             <p>attack2</p>
             <p>attack3</p>
-            <p>attack4</p>
+            <p>attack4</p> */}
         </ContainerTypes>
         
     </div>

@@ -3,16 +3,15 @@ import { useHistory } from 'react-router-dom';
 import GlobalStateContext from "../../Global/GlobalStateContext";
 import { CardPokedex } from "./Style";
 import { Container } from "./Style";
+import { goToPokemonDetail } from "../../routes/coordinator";
 
 export default function Pokedex(props) {
-    const {states, setters, requests} = useContext(GlobalStateContext)
+    const {states} = useContext(GlobalStateContext)
     const history= useHistory()
     const goBack=()=>{
         history.goBack()
     }
-    const goToPokedexDetails=()=>{
-        history.push("/pokedex-detalhes/:nome")
-    }
+    
 
     const pokedex= states.pokedex
 
@@ -29,7 +28,7 @@ export default function Pokedex(props) {
                 <h4>{poke.name}</h4>
                 <div>
                 <button>Remover</button>
-                <button onClick={goToPokedexDetails}>Detalhes</button>
+                <button onClick={()=>goToPokemonDetail(history, poke.name)}>Detalhes</button>
                 </div>
                 </CardPokedex>
                 </Container>
@@ -44,7 +43,6 @@ export default function Pokedex(props) {
         <h1>Pokedex</h1>
         {pokeCards}
         <button onClick={goBack}>voltar</button>
-        <button onClick={goToPokedexDetails}>detalhes</button>
         </div>
     );
 }
