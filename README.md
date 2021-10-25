@@ -1,15 +1,15 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Stephanie Flávio
+- Laura Laurena
+- Mariana Carolina de Souza
 
-Link do Surge: www.link.com.br
+Link do Surge: frequent-number.surge.sh
 
 O que funciona:
-- Item 1
-- Item 2
+- Postman
+- Router 
 
 O que não funciona: 
 - Item 3
